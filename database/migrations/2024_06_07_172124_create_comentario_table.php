@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('comentario', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->id('pk_comentario')->autoIncrement(); // Primary key with auto-increment
+            $table->text('comentario'); // TEXT NOT NULL
+            $table->integer('estatus'); // INT NOT NULL
+            $table->dateTime('fecha'); // DATETIME NOT NULL
+            $table->timestamps(); // Created_at and updated_at columns
         });
     }
 

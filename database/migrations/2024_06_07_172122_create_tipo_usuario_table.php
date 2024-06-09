@@ -11,9 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('persona', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::create('tipo_usuario', function (Blueprint $table) {
+            $table->id('pk_tipo_usuario')->autoIncrement(); // Primary key with auto-increment
+            $table->string('nombre', 10); // VARCHAR(10) NOT NULL
+            $table->timestamps(); // Created_at and updated_at columns
         });
     }
 
@@ -22,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('persona');
+        Schema::dropIfExists('tipo_usuario');
     }
 };
