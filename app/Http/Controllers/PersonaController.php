@@ -33,6 +33,8 @@ class PersonaController extends Controller
         $persona->edad = $hoy->diff($fecha_nacimiento)->y;
 
         $persona->save();
+return 'hola';
+  
     }
 
     public function store(Request $request)
@@ -42,10 +44,9 @@ class PersonaController extends Controller
         try {
             $persona = new Persona();
             $this->savePersonaData($validatedData, $persona);
-
-            return redirect()->back()->with('success', 'Datos almacenados correctamente.');
+            return redirect()->route('usuario.index', $persona->id);
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', 'Error al ejecutar la consulta: ' . $e->getMessage());
+          //  return redirect()->back()->with('error', 'Error al ejecutar la consulta: ' . $e->getMessage());
         }
     }
 

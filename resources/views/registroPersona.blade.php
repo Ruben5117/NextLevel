@@ -7,9 +7,7 @@
 </head>
 <body>
 
-
-
-    <form action="{{ route('persona.store') }}" method="POST">
+    <form id="registroForm" action="{{ route('persona.store') }}" method="POST">
         @csrf
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre" required><br>
@@ -25,17 +23,6 @@
 
         <button type="submit">Guardar</button>
     </form>
-    @if(session('success'))
-        <div style="color: green;">
-            {{ session('success') }}
-        </div>
-    @endif
 
-    @if(session('error'))
-        <div style="color: red;">
-            {{ session('error') }}
-        </div>
-    @endif
 </body>
-
 </html>
