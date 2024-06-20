@@ -30,7 +30,7 @@ class UsuarioController extends Controller
 
             $usuario->save();
 
-            return redirect()->back()->with('success', 'Datos almacenados correctamente.');
+            return redirect('/login');
 
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Error al ejecutar la consulta: ' . $e->getMessage());

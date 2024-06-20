@@ -24,5 +24,6 @@
         <button type="submit">Guardar</button>
     </form>
 
+<p>Si ya tienes cuenta, haz click <a href="/">aquí</a></p>
 </body>
 </html>

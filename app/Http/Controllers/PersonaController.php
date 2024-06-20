@@ -33,7 +33,7 @@ class PersonaController extends Controller
         $persona->edad = $hoy->diff($fecha_nacimiento)->y;
 
         $persona->save();
-return 'hola';
+
   
     }
 
