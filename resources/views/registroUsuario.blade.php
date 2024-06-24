@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de usuarios</title>
 </head>
-<body>
+<body class="bk">
 
     <form id="registroForm" action="{{ route('usuario.store') }}" method="POST">
         @csrf
