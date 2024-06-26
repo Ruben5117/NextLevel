@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PersonaController;
 use App\Http\Controllers\TipousuarioController;
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\clienteController;
 use App\Http\Controllers\LoginController;
 
 Route::get('/registroPersona', [PersonaController::class, 'index'])->name('persona.index');
@@ -20,11 +21,15 @@ Route::post('/usuar', [UsuarioController::class, 'store'])->name('usuario.store'
 Route::put('/usuario/{id}', [UsuarioController::class, 'update'])->name('usuario.update');
 Route::delete('/usuario/{id}', [UsuarioController::class, 'destroy'])->name('usuario.destroy');
 
-// Ruta para el inicio de sesión
+
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 Route::get('/', function () {
     return view('LoginUsuario');
 });
+Route::post('/cliente/store', [ClienteController::class, 'store'])->name('cliente.store'); // Almacena un nuevo cliente
+Route::get('/cliente', [ClienteController::class, 'create'])->name('cliente.create'); // Muestra el formulario de registro de cliente
+
+
 
 Route::get('/admin', function () {
     return view('IndexAdmin');
