@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Cliente;
 use App\Models\Usuario;
-use PhpParser\Node\Stmt\Catch_;
+use Illuminate\Support\Facades\DB;
+
 
 class ClienteController extends Controller
 {
@@ -42,7 +43,13 @@ class ClienteController extends Controller
 
     public function create()
     {
-        $usuarios = Usuario::all(); 
-        return view('registroCliente', compact('usuarios')); 
+        $datos = DB::table('cliente as c')
+            ->join('usuario as u', 'c.fk_usuario', '=', 'u.pk_usuario')
+            ->join('persona as p', 'u.fk_persona', '=', 'p.pk_persona')
+            ->select('c.cod_cliente', 'u.correo', 'p.nombre', 'u.pk_usuario')
+            ->get();
+
+      
+        return view('registroCliente', compact('datos'));
     }
 }

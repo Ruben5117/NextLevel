@@ -14,8 +14,8 @@
         <label for="fk_usuario">Usuario:</label>
         <select name="fk_usuario" id="fk_usuario" class="form-control" required>
         <option value="" disabled selected>Selecciona una opcion</option>
-            @foreach ($usuarios as $usuario)
-                <option value="{{ $usuario->pk_usuario }}">{{ $usuario->correo }}</option>
+        @foreach ($datos as $dato)
+                <option value="{{ $dato->pk_usuario }}">{{ $dato->correo }} - {{ $dato->nombre }}</option>
             @endforeach
         </select>
 
