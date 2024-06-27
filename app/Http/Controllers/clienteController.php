@@ -46,7 +46,7 @@ class ClienteController extends Controller
         $datos = DB::table('cliente as c')
             ->join('usuario as u', 'c.fk_usuario', '=', 'u.pk_usuario')
             ->join('persona as p', 'u.fk_persona', '=', 'p.pk_persona')
-            ->select('c.cod_cliente', 'u.correo', 'p.nombre', 'u.pk_usuario')
+            ->select( 'u.correo', 'p.nombre', 'u.pk_usuario')
             ->get();
 
       

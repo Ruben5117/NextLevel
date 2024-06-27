@@ -46,10 +46,10 @@ class PersonaController extends Controller
             $this->savePersonaData($validatedData, $persona);
             return redirect()->route('usuario.index', $persona->id);
         } catch (\Exception $e) {
-          //  return redirect()->back()->with('error', 'Error al ejecutar la consulta: ' . $e->getMessage());
+        return redirect()->back()->with('error', 'Error al ejecutar la consulta: ' . $e->getMessage());
+        
         }
     }
-
     public function index()
     {
         $personas = Persona::all();

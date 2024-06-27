@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <form id="registroForm" action="{{ route('persona.store') }}" method="POST">
+    <form  action="{{ route('persona.store') }}" method="POST">
         @csrf
         <label for="nombre">Nombre:</label>
         <input type="text" name="nombre" required><br>

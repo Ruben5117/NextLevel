@@ -6,6 +6,7 @@ use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\clienteController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RutinaController;
 
 Route::get('/registroPersona', [PersonaController::class, 'index'])->name('persona.index');
 Route::post('/personareg', [PersonaController::class, 'store'])->name('persona.store');
@@ -31,7 +32,10 @@ Route::post('/cliente/store', [ClienteController::class, 'store'])->name('client
 Route::get('/cliente', [ClienteController::class, 'create'])->name('cliente.create'); // Muestra el formulario de registro de cliente
 
 Route::post('/coach/store', [CoachController::class, 'store'])->name('coach.store'); // Almacena un nuevo cliente
-Route::get('/coach', [Coachcontroller::class, 'create'])->name('coach.create'); 
+Route::get('/coach', [CoachController::class, 'create'])->name('coach.create'); 
+
+Route::post('/rutina/store', [RutinaController::class, 'store'])->name('rutina.store'); 
+Route::get('/rutina', [RutinaController::class, 'create'])->name('rutina.create'); 
 
 Route::get('/admin', function () {
     return view('IndexAdmin');
