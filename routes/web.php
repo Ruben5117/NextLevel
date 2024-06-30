@@ -7,6 +7,11 @@ use App\Http\Controllers\clienteController;
 use App\Http\Controllers\CoachController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RutinaController;
+use App\Http\Controllers\LogoutController;
+
+Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
+
+
 
 Route::get('/registroPersona', [PersonaController::class, 'index'])->name('persona.index');
 Route::post('/personareg', [PersonaController::class, 'store'])->name('persona.store');

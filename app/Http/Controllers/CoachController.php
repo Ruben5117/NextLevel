@@ -44,14 +44,13 @@ class CoachController extends Controller
     
 
         $datoscoach = DB::table('usuario as u')
-    ->join('persona as p', 'u.fk_persona', '=', 'p.pk_persona')
-    ->whereNotExists(function ($query) {
-        $query->select(DB::raw(1))
-              ->from('cliente')
-              ->whereRaw('cliente.fk_usuario = u.pk_usuario');
-    })
-    ->select('u.correo', 'p.nombre', 'u.pk_usuario')
-    ->get();
+        ->join('persona as p', 'u.fk_persona', '=', 'p.pk_persona')
+        ->leftJoin('cliente as c', 'u.pk_usuario', '=', 'c.fk_usuario')
+        ->leftJoin('coach as ch', 'u.pk_usuario', '=', 'ch.fk_usuario')
+        ->select('u.correo', 'p.nombre', 'u.pk_usuario')
+        ->whereNull('c.pk_cliente') 
+        ->whereNull('ch.pk_coach')  
+        ->get();
 
 
       

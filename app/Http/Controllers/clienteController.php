@@ -43,11 +43,14 @@ class ClienteController extends Controller
 
     public function create()
     {
-        $datos = DB::table('cliente as c')
-            ->join('usuario as u', 'c.fk_usuario', '=', 'u.pk_usuario')
-            ->join('persona as p', 'u.fk_persona', '=', 'p.pk_persona')
-            ->select( 'u.correo', 'p.nombre', 'u.pk_usuario')
-            ->get();
+        $datos = DB::table('usuario as u')
+        ->join('persona as p', 'u.fk_persona', '=', 'p.pk_persona')
+        ->leftJoin('cliente as c', 'u.pk_usuario', '=', 'c.fk_usuario')
+        ->leftJoin('coach as ch', 'u.pk_usuario', '=', 'ch.fk_usuario')
+        ->select('u.correo', 'p.nombre', 'u.pk_usuario')
+        ->whereNull('c.pk_cliente') 
+        ->whereNull('ch.pk_coach')  
+        ->get();
 
       
         return view('registroCliente', compact('datos'));
