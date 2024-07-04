@@ -3,29 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LOGIN</title>
-</head>
-<body>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>Inicia sesion</title>
+</head>  
+<body class="bk">
+        <div class="esp"> <h1 class="h1r"> INICIA SESIÓN</h1>
+        <button class="btnr"> ¿No tienes una cuenta?, haz click  <a href="registroPersona">aquí</a> </button>
+    </div> 
 
-    <form action="{{ route('login.store') }}" method="POST">
+    <form  class="divr" action="{{ route('login.store') }}" method="POST" style="padding: 20px;">
         @csrf
-        <label for="correo">Correo:</label><br>
-        <input type="email" name="correo" required value="{{ old('correo') }}"><br>
-        @error('correo')
+
+        <div class="group">
+
+  <input required value="{{ old('correo') }}" type="email" name="correo" placeholder="Correo" class="input">
+  @error('correo')
         <small style="color:red">{{ $message }}</small>
         @enderror
-        <br>
-        <label for="contraseña">Contraseña:</label><br>
-        <input type="password" name="contraseña" required value="{{ old('contraseña') }}"><br>
+        
+        <br> <br>
+        <label for="contraseña"></label><br>
+        <input type="password" name="contraseña" required value="{{ old('contraseña') }}"  placeholder="Contraseña" class="input"><br>
         @error('contraseña')
         <small style="color:red">{{ $message }}</small>
         @enderror
         <br>
-        <button type="submit">Login</button>
+
+        <button type="submit" class="bl"> Inicia sesión
+</button>
     </form>
 
     
-<p>Si no tienes cuenta, haz click <a href="registroPersona">aquí</a></p>
+
 
     @if(session('success'))
         <div style="color: green;">
