@@ -16,7 +16,8 @@ return new class extends Migration
             $table->string('nombre', 50); // VARCHAR(50) NOT NULL
             $table->date('fnac'); // DATE NOT NULL
             $table->string('apellidop', 30); // VARCHAR(30) NOT NULL
-            $table->string('apellidom', 30); // VARCHAR(30) NOT NULL
+            $table->string('apellidom', 30); 
+            $table->integer('edad');// VARCHAR(30) NOT NULL
             $table->integer('estatus')->nullable(); // INT, can be NULL
             $table->timestamps(); // Created_at and updated_at columns
         });

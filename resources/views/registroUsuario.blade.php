@@ -10,8 +10,9 @@
 
     <form id="registroForm" action="{{ route('usuario.store') }}" method="POST">
         @csrf
-
-        <input type="email" name="correo" placeholder="Correo electrónico">
+<label for="correo">correo</label>
+        <input type="email" name="correo" placeholder="Correo electrónico"><br>
+        <label for="contraseña">contraseña</label>
         <input type="password" name="contraseña" placeholder="Contraseña">
         <input type="hidden" name="fk_tipo_usuario" value="1">
         <input type="hidden" name="fk_persona" value="{{ $fk_persona }}">

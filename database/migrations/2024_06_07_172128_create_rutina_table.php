@@ -19,13 +19,11 @@ return new class extends Migration
             $table->integer('estatus'); // INT NOT NULL
             $table->date('fecha'); // DATE NOT NULL
             $table->unsignedBigInteger('fk_cliente'); // INT NOT NULL, foreign key
-            $table->unsignedBigInteger('fk_comentario'); // INT NOT NULL, foreign key
             $table->unsignedBigInteger('fk_coach'); // INT NOT NULL, foreign key
             $table->timestamps(); // Created_at and updated_at columns
 
             // Foreign key constraints (assuming the referenced tables exist)
             $table->foreign('fk_cliente')->references('pk_cliente')->on('cliente');
-            $table->foreign('fk_comentario')->references('pk_comentario')->on('comentario');
             $table->foreign('fk_coach')->references('pk_coach')->on('coach');
         });
     }

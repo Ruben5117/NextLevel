@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -16,6 +15,14 @@ return new class extends Migration
             $table->text('comentario'); // TEXT NOT NULL
             $table->integer('estatus'); // INT NOT NULL
             $table->dateTime('fecha'); // DATETIME NOT NULL
+            
+            // Foreign keys
+            $table->unsignedBigInteger('fk_rutina');
+            $table->foreign('fk_rutina')->references('pk_rutina')->on('rutina');
+            
+            $table->unsignedBigInteger('fk_usuario');
+            $table->foreign('fk_usuario')->references('pk_usuario')->on('usuario');
+            
             $table->timestamps(); // Created_at and updated_at columns
         });
     }
