@@ -9,10 +9,10 @@ class LogoutController extends Controller
 {
     public function logout(Request $request)
     {
-        Auth::logout(); // Cerrar sesión del usuario
-        $request->session()->invalidate(); // Invalidar la sesión
-        $request->session()->regenerateToken(); // Regenerar el token de sesión
+        Auth::logout();
+        $request->session()->invalidate(); 
+        $request->session()->regenerateToken(); 
 
-        return redirect('/')->with('status', 'Haz cerrado sesión'); // Redirigir y pasar mensaje flash
+        return redirect('/')->with('status', 'Haz cerrado sesión'); 
     }
 }

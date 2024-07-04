@@ -56,4 +56,60 @@ class RutinaController extends Controller
         
         return view('registroRutina', compact('clientesDA', 'coachs'));
     }
+     public function index()
+    {
+        $rutinas = DB::select('
+        SELECT r.pk_rutina, r.nombre, r.descripción, r.foto, r.estatus, r.fecha,
+               c.cod_cliente, c.foto AS foto_cliente,
+               co.cod_coach,
+               u.correo AS correo_cliente, p.nombre AS nombre_cliente,
+               u2.correo AS correo_coach, p2.nombre AS nombre_coach
+        FROM rutina r
+        INNER JOIN cliente c ON r.fk_cliente = c.pk_cliente
+        INNER JOIN coach co ON r.fk_coach = co.pk_coach
+        INNER JOIN usuario u ON c.fk_usuario = u.pk_usuario
+        INNER JOIN persona p ON u.fk_persona = p.pk_persona
+        INNER JOIN usuario u2 ON co.fk_usuario = u2.pk_usuario
+        INNER JOIN persona p2 ON u2.fk_persona = p2.pk_persona
+        WHERE r.estatus = 1
+    ');
+
+    return view('RutinasView', compact('rutinas'));
+    }
+    public function destroy($pk_rutina)
+    {
+        try {
+            
+            $rutina = Rutina::findOrFail($pk_rutina);
+         
+            $rutina->estatus = 0; 
+            
+            $rutina->save();
+            
+            return redirect()->back()->with('success', 'Rutina desactivado correctamente.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Error al ejecutar la consulta: ' . $e->getMessage());
+        }
+    }
+    public function show($id)
+    {
+        $rutinaDetalle = DB::table('rutina as r')
+        ->join('cliente as c', 'r.fk_cliente', '=', 'c.pk_cliente')
+        ->join('coach as co', 'r.fk_coach', '=', 'co.pk_coach')
+        ->join('usuario as u', 'c.fk_usuario', '=', 'u.pk_usuario')
+        ->join('persona as p', 'u.fk_persona', '=', 'p.pk_persona')
+        ->join('usuario as u2', 'co.fk_usuario', '=', 'u2.pk_usuario')
+        ->join('persona as p2', 'u2.fk_persona', '=', 'p2.pk_persona')
+        ->where('r.estatus', 1)
+        ->where('r.pk_rutina', $id)
+        ->select('r.pk_rutina','r.foto as foto_rutina', 'r.nombre', 'r.descripción', 'r.foto', 'r.estatus', 'r.fecha',
+                 'c.pk_cliente', 'c.cod_cliente', 'c.foto as cliente_foto', 'co.pk_coach', 'co.cod_coach',
+                 'u.correo as correo_cliente', 'p.nombre as nombre_cliente',
+                 'u2.correo as correo_coach', 'p2.nombre as nombre_coach')
+        ->first();
+
+        return view('DetallesView', ['rutina' => $rutinaDetalle]);
+    }
+    
 }
+

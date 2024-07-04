@@ -9,9 +9,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RutinaController;
 use App\Http\Controllers\LogoutController;
 
-Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
-
-
+Route::post('/logout', [LogoutController::class, 'logout'])->name('logout.logout');
 
 Route::get('/registroPersona', [PersonaController::class, 'index'])->name('persona.index');
 Route::post('/personareg', [PersonaController::class, 'store'])->name('persona.store');
@@ -26,8 +24,8 @@ Route::delete('/tipo_usuario/{id}', [TipousuarioController::class, 'destroy'])->
 Route::get('/registroUsuario/{fk_persona}', [UsuarioController::class, 'index'])->name('usuario.index');
 Route::post('/usuar', [UsuarioController::class, 'store'])->name('usuario.store');
 Route::put('/usuario/{id}', [UsuarioController::class, 'update'])->name('usuario.update');
-Route::delete('/usuario/{id}', [UsuarioController::class, 'destroy'])->name('usuario.destroy');
-
+Route::delete('/usuarioAD/{id}', [UsuarioController::class, 'destroy'])->name('usuario.destroy');
+Route::get('/usuariosAD', [UsuarioController::class, 'showu'])->name('usuario.showu');
 
 Route::post('/login', [LoginController::class, 'store'])->name('login.store');
 Route::get('/', function () {
@@ -37,15 +35,25 @@ Route::post('/cliente/store', [ClienteController::class, 'store'])->name('client
 Route::get('/cliente', [ClienteController::class, 'create'])->name('cliente.create'); // Muestra el formulario de registro de cliente
 
 Route::post('/coach/store', [CoachController::class, 'store'])->name('coach.store'); // Almacena un nuevo cliente
-Route::get('/coach', [CoachController::class, 'create'])->name('coach.create'); 
+Route::get('/coachs', [CoachController::class, 'create'])->name('coach.create'); 
+Route::get('/coach', [CoachController::class, 'index'])->name('coach.index'); 
+Route::get('/coach/{id}', [CoachController::class, 'show'])->name('coach.show');
 
 Route::post('/rutina/store', [RutinaController::class, 'store'])->name('rutina.store'); 
 Route::get('/rutina', [RutinaController::class, 'create'])->name('rutina.create'); 
+Route::get('rutinas', [RutinaController::class, 'index'])->name('rutinas.index');
+Route::get('/rutinas/{id}', [RutinaController::class, 'show'])->name('rutinas.show');
+Route::delete('/rutinas/{id}', [RutinaController::class, 'destroy'])->name('rutina.destroy');
 
+
+  
 Route::get('/admin', function () {
-    return view('IndexAdmin');
-});
+    return view ('indexAdmin'); }) -> name ('admin');
 
+
+    
+      
+  
 Route::get('/welcome', function () {
     return view ('welcome'); }) -> name ('welcome');
 

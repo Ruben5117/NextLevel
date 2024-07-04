@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de cliente</title>
 </head>
+
+@if (session('fk_tipo_usuario')== 2)
+  @else
+  <script>
+    window.location.href="{{url('/')}}";
+    </script>
+@endif
 <body>
 
    <form action="{{ route('rutina.store') }}" method="POST" enctype="multipart/form-data">
