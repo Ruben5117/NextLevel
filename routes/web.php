@@ -33,6 +33,7 @@ Route::get('/', function () {
 });
 Route::post('/cliente/store', [ClienteController::class, 'store'])->name('cliente.store'); // Almacena un nuevo cliente
 Route::get('/cliente', [ClienteController::class, 'create'])->name('cliente.create'); // Muestra el formulario de registro de cliente
+Route::get('/welcome', [ClienteController::class, 'index'])->name('welcome');
 
 Route::post('/coach/store', [CoachController::class, 'store'])->name('coach.store'); // Almacena un nuevo cliente
 Route::get('/coachs', [CoachController::class, 'create'])->name('coach.create'); 
@@ -53,9 +54,7 @@ Route::get('/admin', function () {
 
     
       
-  
-Route::get('/welcome', function () {
-    return view ('welcome'); }) -> name ('welcome');
+
 
 Route::middleware([
     'auth:sanctum',

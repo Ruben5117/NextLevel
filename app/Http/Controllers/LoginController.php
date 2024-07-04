@@ -21,6 +21,12 @@ class LoginController extends Controller
 
         if ($usuario && Hash::check($request->input('contraseña'), $usuario->contraseña)) {
 
+            $cliente = DB::table('cliente')
+            ->join('usuario', 'cliente.fk_usuario', '=', 'usuario.pk_usuario')
+            ->where('usuario.pk_usuario', $usuario->pk_usuario)
+            ->select('cliente.pk_cliente')
+            ->first(); 
+
             $coach = DB::table('coach')
                 ->join('usuario', 'coach.fk_usuario', '=', 'usuario.pk_usuario')
                 ->where('usuario.pk_usuario', $usuario->pk_usuario)
@@ -36,6 +42,10 @@ class LoginController extends Controller
                 session(['fk_coach_actual' => $coach->pk_coach]);
         
         }
+        if ($cliente) {
+            session(['fk_cliente_actual' => $cliente->pk_cliente]);
+    
+    }
             if ($usuario->estatus == 1) {
                 Auth::login($usuario);
 
