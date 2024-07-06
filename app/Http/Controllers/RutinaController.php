@@ -110,6 +110,41 @@ class RutinaController extends Controller
 
         return view('DetallesView', ['rutina' => $rutinaDetalle]);
     }
+
+    public function edit($id)
+    {
+        $rutina = Rutina::findOrFail($id);
+        return view('EdicionrutinaView', compact('rutina'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        try {
+            $rutina = Rutina::findOrFail($id);
+
+            $request->merge(['fk_tipo_usuario' => 4]);
+
+            $validatedData = $request->validate([
+                'nombre' => 'nullable|string|max:50',
+                'descripción' => 'nullable|string',
+                 'foto' => 'nullable|file|image|max:2048'
+            ]);
+
+            $rutina->nombre = $validatedData['nombre'];
+            $rutina->descripción = $validatedData['descripción'];
+            
+            if ($request->hasFile('foto')) {
+                $rutina->foto = $request->file('foto')->store('fotos', 'public');
+            }
+
+            $rutina->save();
+
+            return redirect()->back()->with('success', 'Datos actualizados correctamente.');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Error al ejecutar la consulta: ' . $e->getMessage());
+        }
+    }
+
     
 }
 

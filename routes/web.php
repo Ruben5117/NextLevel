@@ -5,9 +5,19 @@ use App\Http\Controllers\TipousuarioController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\clienteController;
 use App\Http\Controllers\CoachController;
+use App\Http\Controllers\ComentarioController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RutinaController;
 use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\MedidasController;
+use App\Models\Comentario;
+
+Route::get('/coach/{id}', [CoachController::class, 'show'])->name('coach.show');
+Route::post('/coach/{id}/comentarios', [ComentarioController::class, 'store'])->name('comentarios.store');
+
+
+Route::post('welcome', [MedidasController::class, 'store'])->name('welcome.store');
+Route::put('/welcome/update', [MedidasController::class, 'update'])->name('welcome.update');
 
 Route::post('/logout', [LogoutController::class, 'logout'])->name('logout.logout');
 
@@ -34,6 +44,7 @@ Route::get('/', function () {
 Route::post('/cliente/store', [ClienteController::class, 'store'])->name('cliente.store'); // Almacena un nuevo cliente
 Route::get('/cliente', [ClienteController::class, 'create'])->name('cliente.create'); // Muestra el formulario de registro de cliente
 Route::get('/welcome', [ClienteController::class, 'index'])->name('welcome');
+Route::get('/cliente/{id}', [ClienteController::class, 'show'])->name('cliente.show');
 
 Route::post('/coach/store', [CoachController::class, 'store'])->name('coach.store'); // Almacena un nuevo cliente
 Route::get('/coachs', [CoachController::class, 'create'])->name('coach.create'); 
@@ -45,9 +56,14 @@ Route::get('/rutina', [RutinaController::class, 'create'])->name('rutina.create'
 Route::get('rutinas', [RutinaController::class, 'index'])->name('rutinas.index');
 Route::get('/rutinas/{id}', [RutinaController::class, 'show'])->name('rutinas.show');
 Route::delete('/rutinas/{id}', [RutinaController::class, 'destroy'])->name('rutina.destroy');
+Route::put('/rutinas/{id}', [RutinaController::class, 'update'])->name('rutinas.update');
+Route::get('/rutinas/{id}/edit', [RutinaController::class, 'edit'])->name('rutinas.edit');
 
+Route::put('/comentario/{id}', [ComentarioController::class, 'update'])->name('comentario.update');
+Route::get('/comentario/{id}/edit', [ComentarioController::class, 'edit'])->name('comentario.edit');
 
   
+
 Route::get('/admin', function () {
     return view ('indexAdmin'); }) -> name ('admin');
 

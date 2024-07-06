@@ -1,20 +1,21 @@
+<!-- resources/views/detallesRutina.blade.php -->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalles de la Rutina Coach</title>
+    <title>Detalles de la Rutina Cliente</title>
 </head>
 
-@if (session('fk_tipo_usuario') == 4 )
+@if (session('fk_tipo_usuario')== 1)
   @else
   <script>
     window.location.href="{{url('/')}}";
-  </script>
+    </script>
 @endif
-
 <body>
-    <h1>Detalles de la Rutina: {{ $rutina->nombre }}</h1>
+<h1>Detalles de la Rutina: {{ $rutina->nombre }}</h1>
     <center>
         <div>
             <p>Foto rutina:</p><img src="{{ asset('storage/' . $rutina->foto_rutina) }}" width="200" height="200">
@@ -34,23 +35,23 @@
         <p>Codigo del Coach: {{ $rutina->cod_coach }}</p>
         <p>Peso del cliente: {{ $rutina->peso_cliente }} Kg</p>
         <p>Estatura del cliente: {{ $rutina->estatura_cliente }} cm</p>
-    </div>
-    <a href="/coach"><button>Index</button></a><br>
 
-    <form action="{{ route('comentarios.store', ['id' => $rutina->pk_rutina]) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        <label for="comentario">Escribe tu comentario</label><br>
-        <textarea type="text" name="comentario" placeholder="comentario" required></textarea><br>
-        <button type="submit">Publicar</button>
-    </form>
+        <a href="/welcome"><button>Index</button></a><br>
 
-    @if(session('success'))
-        <div style="color: green;">
-            {{ session('success') }}
-        </div>
-    @endif
+        <form action="{{ route('comentarios.store', ['id' => $rutina->pk_rutina]) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <label for="comentario">Escribe tu comentario</label><br>
+            <textarea type="text" name="comentario" placeholder="comentario" required></textarea><br>
+            <button type="submit">Publicar</button>
+        </form>
 
-    <h2>Comentarios</h2>
+        @if(session('success'))
+            <div style="color: green;">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <h2>Comentarios</h2>
     <div id="detalleseleccion" name="detalleseleccion" class="este">
     @if ($comentarios->isEmpty())
         <p>No hay comentarios para esta rutina.</p>
