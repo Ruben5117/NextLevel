@@ -6,8 +6,7 @@
     <title>Detalles de la Rutina Coach</title>
 </head>
 
-@if (session('fk_tipo_usuario') == 4 )
-  @else
+@if (session('fk_tipo_usuario') != 4)
   <script>
     window.location.href="{{url('/')}}";
   </script>
@@ -56,28 +55,36 @@
         <p>No hay comentarios para esta rutina.</p>
     @else
         <ul>
-            @foreach ($comentarios as $comentario)
+            @php
+                $sortedComentarios = $comentarios->sortByDesc('fecha');
+            @endphp
+            @foreach ($sortedComentarios as $comentario)
                 <li>
                     <p>Por: {{ $comentario->usuario->persona->nombre }}</p>
                     <p>{{ $comentario->comentario }}</p>
                     <p>Fecha: {{ $comentario->fecha }}</p>
-                  
-                    <button class="rutina-nombre" data-comentario-id="{{ $comentario->pk_comentario }}" style="cursor: pointer;">Editar</button>
-                    <div id="comentario-{{ $comentario->pk_comentario }}-form" class="rutina-detalles" style="display: none;">
-                        <form action="{{ route('comentario.update', ['id' => $comentario->pk_comentario]) }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            @method('PUT')
-
-                            <div>
-                                <label for="comentario">Comentario:</label>
-                                <input type="text" id="comentario" name="comentario" value="{{ old('comentario', $comentario->comentario) }}">
-                                @error('comentario')
-                                    <div>{{ $message }}</div>
-                                @enderror
-                            </div>
-                            <button type="submit">Actualizar</button>
-                        </form>
-                    </div>
+                    @if(auth()->id() == $comentario->fk_usuario)
+                        <button class="rutina-nombre" data-comentario-id="{{ $comentario->pk_comentario }}" style="cursor: pointer;">Editar</button>
+                        <div id="comentario-{{ $comentario->pk_comentario }}-form" class="rutina-detalles" style="display: none;">
+                            <form action="{{ route('comentario.update', ['id' => $comentario->pk_comentario]) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
+                                @method('PUT')
+                                <div>
+                                    <label for="comentario">Comentario:</label>
+                                    <input type="text" id="comentario" name="comentario" value="{{ old('comentario', $comentario->comentario) }}">
+                                    @error('comentario')
+                                        <div>{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <button type="submit">Actualizar</button>
+                            </form>
+                        </div>
+                        <form action="{{ route('comentario.destroy', ['id' => $comentario->pk_comentario]) }}" method="POST">
+    @csrf
+    @method('DELETE')
+    <button type="submit">Eliminar</button>
+</form>
+                    @endif
                 </li>
             @endforeach
         </ul>
@@ -98,12 +105,12 @@
 </script>
 <style>
     .este {
-  height: 20em;
-  line-height: 1em;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  width: 100%;
-  border: 1px solid;
-  background-color: lightblue;
-}
+        height: 20em;
+        line-height: 1em;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        width: 100%;
+        border: 1px solid;
+        background-color: lightblue;
+    }
 </style>

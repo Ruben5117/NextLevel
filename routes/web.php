@@ -61,6 +61,7 @@ Route::get('/rutinas/{id}/edit', [RutinaController::class, 'edit'])->name('rutin
 
 Route::put('/comentario/{id}', [ComentarioController::class, 'update'])->name('comentario.update');
 Route::get('/comentario/{id}/edit', [ComentarioController::class, 'edit'])->name('comentario.edit');
+Route::delete('/comentarioDE/{id}', [ComentarioController::class, 'destroy'])->name('comentario.destroy');
 
   
 

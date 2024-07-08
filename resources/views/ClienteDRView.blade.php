@@ -57,12 +57,17 @@
         <p>No hay comentarios para esta rutina.</p>
     @else
         <ul>
-            @foreach ($comentarios as $comentario)
+        @php
+                $sortedComentarios = $comentarios->sortByDesc('fecha');
+            @endphp
+            @foreach ($sortedComentarios as $comentario)
+
+          
                 <li>
                     <p>Por: {{ $comentario->usuario->persona->nombre }}</p>
                     <p>{{ $comentario->comentario }}</p>
                     <p>Fecha: {{ $comentario->fecha }}</p>
-                  
+                    @if(auth()->id() == $comentario->fk_usuario)
                     <button class="rutina-nombre" data-comentario-id="{{ $comentario->pk_comentario }}" style="cursor: pointer;">Editar</button>
                     <div id="comentario-{{ $comentario->pk_comentario }}-form" class="rutina-detalles" style="display: none;">
                         <form action="{{ route('comentario.update', ['id' => $comentario->pk_comentario]) }}" method="POST" enctype="multipart/form-data">
@@ -79,6 +84,12 @@
                             <button type="submit">Actualizar</button>
                         </form>
                     </div>
+                    <form action="{{ route('comentario.destroy', ['id' => $comentario->pk_comentario]) }}" method="POST">
+    @csrf
+    @method('DELETE')
+    <button type="submit">Eliminar</button>
+</form>
+                    @endif
                 </li>
             @endforeach
         </ul>

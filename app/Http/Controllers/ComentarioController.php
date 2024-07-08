@@ -66,5 +66,22 @@ class ComentarioController extends Controller
         }
     }
 
+    public function destroy($pk_comentario)
+{
+    try {
+       
+        $comentario = Comentario::findOrFail($pk_comentario);
+
+
+        $comentario->delete();
+
+  
+        return redirect()->back()->with('success', 'Comentario eliminado correctamente.');
+    } catch (\Exception $e) {
+  
+        return redirect()->back()->with('error', 'Error al ejecutar la consulta: ' . $e->getMessage());
+    }
+}
+
     
 }
