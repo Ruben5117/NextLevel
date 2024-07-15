@@ -19,7 +19,7 @@
     @csrf
     <button type="submit">Logout</button><br>
 </form>
-
+<button> <a href="/rutina">Registrar rutina</a></button><br>
 <h1>Tus rutinas</h1>
 @foreach($rutinas as $rutina)
     <h3 class="rutina-nombre" style="cursor: pointer;">{{ $rutina->nombre }}</h3>
