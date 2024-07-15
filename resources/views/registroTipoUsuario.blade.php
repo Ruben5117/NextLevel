@@ -6,6 +6,14 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>Registro de tipo de usuarios</title>
 </head>
+
+@if (session('fk_tipo_usuario')== 2)
+  @else
+  <script>
+    window.location.href="{{url('/')}}";
+    </script>
+@endif
+  
 <body class="bk">
     
     <div class="container"> 

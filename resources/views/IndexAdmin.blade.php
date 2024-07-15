@@ -22,7 +22,6 @@
  <button> <a href="/registroPersona">Registrar Personas y usuario</a></button> <br>
  <button>  <a href="/cliente">Registrar clientes</a></button><br>
   <button> <a href="/coachs">Registrar coachs</a></button><br>
-  <button> <a href="/rutina">Registrar rutina</a></button><br>
   <button> <a href="/tipo_usuario"">Registrar tipo de usuario</a></button>
   <p>Vista Usuario</p>
   <button> <a href="/usuariosAD">Usuarios</a></button>

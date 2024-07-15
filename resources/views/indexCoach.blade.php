@@ -19,7 +19,7 @@
     @csrf
     <button type="submit">Logout</button><br>
 </form>
-
+<button> <a href="/rutina">Registrar rutina</a></button><br>
 <h1>Tus rutinas</h1>
 @foreach($rutinas as $rutina)
     <h3 class="rutina-nombre" style="cursor: pointer;">{{ $rutina->nombre }}</h3>
@@ -31,6 +31,7 @@
         <p>Nombre Coach: {{ $rutina->nombre_coach }}</p>
         <p>Correo Coach: {{ $rutina->correo_coach }}</p>
         <a href="{{ route('coach.show', ['id' => $rutina->pk_rutina]) }}"><button>Detalles</button></a>
+        <a href="{{ route('rutinas.edit', ['id' => $rutina->pk_rutina]) }}">Editar</a>
         <form action="{{ route('rutina.destroy', ['id' => $rutina->pk_rutina]) }}" method="POST">
             @csrf
             @method('DELETE')

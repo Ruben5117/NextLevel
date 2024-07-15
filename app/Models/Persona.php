@@ -12,4 +12,9 @@ class Persona extends Model
     protected $table = 'persona'; 
 
     protected $fillable = ['nombre', 'fnac', 'apellidop', 'apellidom', 'estatus']; 
+
+    public function persona()
+    {
+        return $this->belongsTo(Persona::class, 'fk_persona', 'pk_persona');
+    }
 }

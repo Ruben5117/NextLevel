@@ -28,4 +28,14 @@ class Usuario extends Authenticatable
     {
         return $this->contraseña;
     }
+
+    public function persona()
+    {
+        return $this->belongsTo(Persona::class, 'fk_persona', 'pk_persona');
+    }
+
+    public function comentarios()
+    {
+        return $this->hasMany(Comentario::class, 'fk_usuario', 'pk_usuario');
+    }
 }
