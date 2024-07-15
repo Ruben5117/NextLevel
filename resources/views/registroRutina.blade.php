@@ -7,7 +7,7 @@
     <title>Registro de rutina</title>
 </head>
 
-@if (session('fk_tipo_usuario')== 2)
+@if (session('fk_tipo_usuario') == 4)
   @else
   <script>
     window.location.href="{{url('/')}}";
