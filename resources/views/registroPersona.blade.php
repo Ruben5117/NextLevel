@@ -23,7 +23,7 @@
   
         <label for="fnac">
             <input class="input" type="date" name="fnac" placeholder="" required="">
-            <span>Fecha de nacimiento</span>
+            
         </label>
     </div>  
             
