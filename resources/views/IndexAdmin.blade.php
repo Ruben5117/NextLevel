@@ -36,12 +36,15 @@
                     <li><a href="/registroPersona">Personas</a></li> <br> 
                     <li><a href="/cliente">Clientes</a></li> <br>  <br>  <br> 
                     <li><a href="/coachs">Coachs</a></li>
-                    <li><a href="/rutina">Registrar rutina</a></li>
                     <li><a href="/tipo_usuario">Registrar tipo de usuario</a></li>
                     <li><a href="/usuariosAD">Usuarios</a></li>
                     <li><a href="/rutinas">Rutinas</a></li>
-                    <button class="btnlo" type="submit">Logout</button>
+                  
+<form action="/logout" method="POST">
+    @csrf
+    <button type="submit" class="btnlo">Cerrar sesión</button><br>
 </form>
+
                 </ul>
             </div>
             <span class="navTrigger">

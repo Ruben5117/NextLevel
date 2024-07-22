@@ -25,7 +25,7 @@
 <div class="container"> 
     <img src="css/img/ft2.jpeg" class="imgtu"> 
     
-    <form id="registrocoachForm" action="{{ route('coach.store') }}" method="POST" enctype="multipart/form-data" class="divr">
+    <form id="registrocoachForm" action="{{ route('coach.store') }}" method="POST" enctype="multipart/form-data" class="divr" style="z-index: 9999; position:fixed;">
         @csrf
        
         <label for="fk_usuario">Usuario:</label>

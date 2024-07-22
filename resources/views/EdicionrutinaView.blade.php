@@ -1,47 +1,69 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
     <title>Editar Rutina</title>
 </head>
-<body>
-    @if (session('success'))
-        <div>{{ session('success') }}</div>
-    @endif
-
-    @if (session('error'))
-        <div>{{ session('error') }}</div>
-    @endif
-
-    <form action="{{ route('rutinas.update', ['id' => $rutina->pk_rutina]) }}" method="POST" enctype="multipart/form-data">
+<body class="bk">
+ <center> 
+    <form class="form" action="{{ route('rutinas.update', ['id' => $rutina->pk_rutina]) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
+        
+        <p class="title" style="color: white;">Editar Rutina</p>
+        
+        @if (session('success'))
+            <div class="message">{{ session('success') }}</div>
+        @endif
 
-        <div>
-            <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" name="nombre" value="{{ old('nombre', $rutina->nombre) }}" >
-            @error('nombre')
-                <div>{{ $message }}</div>
-            @enderror
-        </div>
+        @if (session('error'))
+            <div class="message">{{ session('error') }}</div>
+        @endif
 
-        <div>
-            <label for="descripción">Descripción:</label>
-            <textarea id="descripción" name="descripción" >{{ old('descripción', $rutina->descripción) }}</textarea>
-            @error('descripción')
-                <div>{{ $message }}</div>
-            @enderror
-        </div>
+        <label for="nombre">
+            <input class="input" type="text" id="nombre" name="nombre" value="{{ old('nombre', $rutina->nombre) }}" required>
+            <span>Nombre</span>
+        </label>
+        @error('nombre')
+            <div class="message">{{ $message }}</div>
+        @enderror
 
-        <div>
-            <label for="foto">Foto:</label>
-            <input type="file" id="foto" name="foto">
-            @error('foto')
-                <div>{{ $message }}</div>
-            @enderror
-        </div>
+        <label for="descripción">
+            <textarea class="input" id="descripción" name="descripción" required>{{ old('descripción', $rutina->descripción) }}</textarea>
+            <span>Descripción</span>
+        </label>
+        @error('descripción')
+            <div class="message">{{ $message }}</div>
+        @enderror
 
-        <button type="submit">Actualizar</button>
+        <label for="foto">
+            <input class="input" type="file" id="foto" name="foto" required>
+            <span>Foto</span>
+        </label>
+        @error('foto')
+            <div class="message">{{ $message }}</div>
+        @enderror
+
+        <button class="submit" type="submit">Actualizar</button>
     </form>
-    <a href="/coach"><button>Index</button></a><br>
+    </center>
+
+    
+    
+<button class="button" style="margin-top: -300px;">
+  
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75"></path>
+</svg>
+
+<a href="/coach"> 
+<div class="text">
+ Salir
+</div>
+</a>
+
+</button>
 </body>
 </html>
