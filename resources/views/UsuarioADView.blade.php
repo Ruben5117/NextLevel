@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <title>Registro de Usuarios</title>
+    <title>Lista de Usuarios</title>
     <style>
     body{
         font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -97,4 +97,11 @@
         </tbody>
     </table>
 </body>
+<style>
+    @media (max-width: 767px){
+    .button{
+        margin-left: -200px;
+    }
+}
+</style>
 </html>

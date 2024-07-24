@@ -67,8 +67,15 @@
 </body>
 
 <style>
-    .container{
-        display: flex;
+    
+         @media (max-width: 767px) {
+.imgtu{
+    display: none;
+}
+.divr{
+    margin-top: 200px;
+}
          }
+         
 </style>
 </html>
