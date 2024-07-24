@@ -326,16 +326,26 @@ h3{
 
 
 }
+#btnsl{
+  margin-left: 1200px; margin-top: 10px;
+}
 
 @media (max-width: 760px) {
+  #btnsl{
+    margin-left: 70%; margin-top: 10px;
+  }
+
   .divr{
     margin-top: 40px;
     margin-left: 120px;
     width: 400px;
   }
   .form{
-    margin-left: 20px;
+    margin-top: 40px !important;
+    margin-left: 50px !important;
+    width: 100%;
   }
+  
   .btnr{
     background-color: #5E3AD4; 
     color: #222323; 
@@ -375,6 +385,7 @@ h3{
   color: #fff;
   border: 1px solid #333;
   margin-top: 5%;
+  margin-left: auto; margin-top: -40%; margin-right: 110px;
 }
 
 .title {

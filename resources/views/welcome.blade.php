@@ -173,7 +173,7 @@
  <footer id="sect5"> 
 <h1 style="color: white; margin-top:90px; text-align:center;">¡Siguenos en nuestras redes sociales!</h1>
 <div class="horizontal-line" style="display: flex; justify-content: space-evenly; align-items: center;">
-    <img src="css/img/logotipo-de-instagram.png" style="width:40px; height:40px; " > 
+    <a href="https://www.instagram.com/xaos_princess?igsh=bGpleGVwdDM4YXd5&utm_source=qr">  <img src="css/img/logotipo-de-instagram.png" style="width:40px; height:40px; ">    </a>  
     <img src="css/img/facebook.png" style="width:40px; height:40px; " > 
     <img src="css/img/tik-tok.png" style="width:40px; height:40px; " > 
 </div>
@@ -464,57 +464,71 @@
 
 @media screen and (max-width:768px) {
     #txt {
-        font-size: 55px !important;
-        color: white; /* Ajusta el tamaño del texto para pantallas más pequeñas */
-    }
-    .contenedorr{
-       
-        width: 50%;
-        margin-left: 30px !important;
-    }
-    .contenedorrr{
-        margin-left: 30px !important;
-    }
-    .navTrigger {
-        display: block;
-    }
-    .nav div.logo {
-        margin-left: 15px;
-    }
-    .nav div.main_list {
-        width: 100%;
-        height: 0;
-        overflow: hidden;
-    }
-    .nav div.show_list {
-        height: auto;
-        display: none;
-    }
-    .nav div.main_list ul {
-        flex-direction: column;
-        width: 100%;
-        height: 100vh;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        background-color: #5E3AD4;
-        background-position: center top;
-    }
-    .nav div.main_list ul li {
-        width: 100%;
-        text-align: right;
-    }
-    .nav div.main_list ul li a {
-        text-align: center;
-        width: 100%;
-        font-size: 3rem;
-        padding: 20px;
-    }
-    .nav div.media_button {
-        display: block;
-    }
- 
+    font-size: 55px !important;
+    color: white; /* Ajusta el tamaño del texto para pantallas más pequeñas */
+}
 
+.contenedorr {
+    width: 50%;
+    margin-left: 30px !important;
+}
+
+.contenedorrr {
+    margin-left: 30px !important;
+}
+
+.navTrigger {
+    display: block;
+}
+
+.nav div.logo {
+    margin-left: 15px;
+}
+
+.nav div.main_list {
+    width: 100%;
+    height: 0;
+    overflow: hidden;
+}
+
+.nav div.show_list {
+    height: auto;
+    display: none;
+}
+
+.nav div.main_list ul {
+    flex-direction: column;
+    width: 80%;
+    height: 70vh;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: transparent; /* Morado semi-transparente */
+    backdrop-filter: blur(10px); /* Aplica un desenfoque al fondo */
+    background-position: center top;
+}
+
+.nav div.main_list ul li {
+    width: 100%;
+    text-align: right;
+    margin: 0; /* Elimina el margin de los li */
+    padding: 3px 2px;
+}
+
+.nav div.main_list ul li a {
+    text-align: center;
+    width: 100%;
+    font-size: 1rem;
+    padding: 20px;
+    
+}
+.navv{
+    background-color: transparent !important;
+}
+
+.nav div.media_button {
+    display: block;
+}
 
 }
 
