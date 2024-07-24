@@ -11,7 +11,7 @@
     <div class="line"> </div>
 <form class="form"   id="registroForm" action="{{ route('persona.store') }}" method="POST" class="formrp" style="margin-left: auto; margin-top: -40%; margin-right: 110px;">
     @csrf
-    <p class="title">Registro </p>
+    <p class="title" style="color: white;">Registro </p>
     <p class="message">Registrate y se parte de nuestro equipo. </p>
         <div class="flex">
         <label for="nombre">

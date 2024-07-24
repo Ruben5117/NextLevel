@@ -83,6 +83,7 @@
     gap: 10px; /* Espacio entre botones */
 }
 
+
 #alien {
     display: inline-block;
     width: 90px;
