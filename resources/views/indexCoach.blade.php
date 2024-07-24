@@ -51,7 +51,7 @@
 
 @foreach($rutinas as $rutina)
 <div class="card" style="margin-left: 90px;">
- <div class="image">
+ <div>
  <img src="{{ asset('storage/' . $rutina->foto) }}">
         <p>Nombre del Cliente: {{ $rutina->nombre_cliente }}</p>
         <p>Correo del Cliente: {{ $rutina->correo_cliente }}</p>
