@@ -11,7 +11,7 @@
         <button class="btnr"> ¿No tienes una cuenta?, haz click  <a href="registroPersona">aquí</a> </button>
     </div> 
 
-    <form  class="divr" action="{{ route('login.store') }}" method="POST" style="padding: 20px;">
+    <form  class="divr" action="{{ route('login.store') }}" method="POST" style="padding: 10px;">
         @csrf
 
         <div class="group">
@@ -52,6 +52,19 @@
         {{ session('status') }}
     </div>
 @endif
+<style>
+     @media (max-width: 767px){
+        .divr{
+        margin-left: 25px;
+    }
+    .esp{
+        margin-left: -70px;
+    }
+   
+}
+
+    
+</style>
 
 </body>
 </html>

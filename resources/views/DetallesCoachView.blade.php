@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-            
             margin: 0;
             padding: 0;
             background-color: #050715;
@@ -101,9 +100,14 @@
         .comments p {
             margin: 5px 0;
         }
+        .comment-actions {
+            display: flex;
+            align-items: center;
+        }
+        .comment-actions form, .comment-actions button {
+            margin: 0;
+        }
         .edit-comment, .delete-comment {
-            display: inline-block;
-            margin: 5px 0;
             padding: 5px 10px;
             background-color: #A238FF;
             color: #ffffff;
@@ -196,7 +200,14 @@
                     <p>{{ $comentario->comentario }}</p>
                     <p>Fecha: {{ $comentario->fecha }}</p>
                     @if(auth()->id() == $comentario->fk_usuario)
-                    <button class="edit-comment" data-comentario-id="{{ $comentario->pk_comentario }}" style="cursor: pointer;">Editar</button>
+                    <div class="comment-actions">
+                        <button class="edit-comment" data-comentario-id="{{ $comentario->pk_comentario }}">Editar</button>
+                        <form action="{{ route('comentario.destroy', ['id' => $comentario->pk_comentario]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="delete-comment">Eliminar</button>
+                        </form>
+                    </div>
                     <div id="comentario-{{ $comentario->pk_comentario }}-form" class="edit-form">
                         <form action="{{ route('comentario.update', ['id' => $comentario->pk_comentario]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -211,11 +222,6 @@
                             <button type="submit">Actualizar</button>
                         </form>
                     </div>
-                    <form action="{{ route('comentario.destroy', ['id' => $comentario->pk_comentario]) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="delete-comment">Eliminar</button>
-                    </form>
                     @endif
                 </li>
                 @endforeach

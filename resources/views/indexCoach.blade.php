@@ -48,49 +48,39 @@
 </form>
 <h1 style="text-align:center; color:white;">Tus rutinas</h1> 
 
-
+<div class="container"> 
 @foreach($rutinas as $rutina)
 <div class="card" style="margin-left: 90px;">
- <div>
- <img src="{{ asset('storage/' . $rutina->foto) }}">
+      <h2  class="rutina-nombre heading" style="cursor: pointer; ">
+      {{ $rutina->nombre }}
+      </h2>
+    <div class="rutina-detalles" style="display: none;">
+      <div class="line-container"> 
+      <div class="single-line">   Descripción: {{ $rutina->descripción }}</p>
+         </div>
+    </div>
+    <div>
+ <img src="{{ asset('storage/' . $rutina->foto) }}" width="100" height="100">
         <p>Nombre del Cliente: {{ $rutina->nombre_cliente }}</p>
         <p>Correo del Cliente: {{ $rutina->correo_cliente }}</p>
-    
+        <p>Nombre Coach: {{ $rutina->nombre_coach }}</p>
+                <p>Correo Coach: {{ $rutina->correo_coach }}</p>      
  </div>
-  <div class="content">
-    <a href="#">
-      <span  class="rutina-nombre" style="cursor: pointer; ">
-      {{ $rutina->nombre }}
-      </span>
+ <div class="botones">
+    <a  href="{{ route('coach.show', ['id' => $rutina->pk_rutina]) }}"> <button id="alien" class="bl">Detalles </button>
     </a>
-    <br>
-
-    <p class="desc" class="rutina-detalles">
-    Descripción: {{ $rutina->descripción }}
-    </p>
-
-    <a class="action" href="{{ route('coach.show', ['id' => $rutina->pk_rutina]) }}">
-      Detalles
-      <span aria-hidden="true">
-        →
-      </span>
-    </a>
-    <a class="action" href="{{ route('rutinas.edit', ['id' => $rutina->pk_rutina]) }}">
-      Editar
-      <span aria-hidden="true">
-        →
-      </span>
+    <a href="{{ route('rutinas.edit', ['id' => $rutina->pk_rutina]) }}"><button id="alien" class="bl"> Editar </button>
     </a>
   </div>
   <form action="{{ route('rutina.destroy', ['id' => $rutina->pk_rutina]) }}" method="POST">
             @csrf
             @method('DELETE')
-            <button type="submit" class="bl">Eliminar</button>
+            <button type="submit" class="bl" id="alien">Eliminar</button>
         </form>
 </div>
     </div>
 @endforeach
-
+</div>
 <script>
 
     document.addEventListener('DOMContentLoaded', function () {
@@ -104,4 +94,16 @@
     });
 </script>
 </body>
+
+<style>
+  
+#alien {
+    display: inline-block;
+    width: 90px;
+    height: 40px;
+    margin: 0;
+    padding: 0;
+}
+</style>
+
 </html>
