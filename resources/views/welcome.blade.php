@@ -135,7 +135,6 @@
  <section class="no-parallax" id="section3"> 
     <div class="container"> 
         <h1 style="text-align: center; color:#050715; font-weight: 900; font-size: 50px; font-family:arial black; margin-top:-130px; margin-left:130px; position:absolute;" class="rut">Tus rutinas</h1>
-        <div class="scrollable">
             @foreach($rutinasC as $rutina)
             <div class="card" style="margin-left: 30px;">
                 <h3 class="rutina-nombre" style="cursor: pointer; color: white; font-family: avenir;">{{ $rutina->nombre }}</h3>
@@ -150,7 +149,7 @@
                 </div>
             </div>
             @endforeach
-        </div>
+        
     </div>
 </section>
 
@@ -203,7 +202,7 @@
 
 
 <script>
-    // Script para mostrar/ocultar detalles al hacer clic en el nombre de la rutina
+    
     document.addEventListener('DOMContentLoaded', function () {
         const nombresRutina = document.querySelectorAll('.rutina-nombre');
         nombresRutina.forEach(nombre => {
@@ -230,15 +229,13 @@
 
 <style>
 .scrollable {
-    max-height: 600px; /* Puedes ajustar la altura según tus necesidades */
+    max-height: 600px; 
     overflow-y: auto;
-    padding: 10px; /* Opcional, para dar algo de espacio interior */
-    display: flex;/* Opcional, para dar una apariencia de borde */
+    padding: 10px; 
+    display: flex;
     
 }
-.card {
-    margin-bottom: 10px; /* Espacio entre las tarjetas */
-}
+
 
    
 #txt {
