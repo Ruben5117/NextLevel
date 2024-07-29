@@ -134,22 +134,24 @@
  </section>
  <section class="no-parallax" id="section3"> 
     <div class="container"> 
-        <h1 style="text-align: center; color:#050715; font-weight: 900; font-size: 50px; font-family:arial black; margin-top:-130px; margin-left:130px; position:absolute;" class="rut">Tus rutinas</h1>
-            @foreach($rutinasC as $rutina)
-            <div class="card" style="margin-left: 30px;">
-                <h3 class="rutina-nombre" style="cursor: pointer; color: white; font-family: avenir;">{{ $rutina->nombre }}</h3>
-                <div class="rutina-detalles" style="display: none;">
-                    <p style="font-family: avenir;">Descripción: {{ $rutina->descripción }}</p> 
-                    <img src="{{ asset('storage/' . $rutina->foto_rutina) }}" width="100" height="100">
-                    <p style="font-family: avenir;">Nombre del Cliente: {{ $rutina->nombre_cliente }}</p>
-                    <p style="font-family: avenir;">Correo del Cliente: {{ $rutina->correo_cliente }}</p>
-                    <p style="font-family: avenir;">Nombre Coach: {{ $rutina->nombre_coach }}</p>
-                    <p style="font-family: avenir;">Correo Coach: {{ $rutina->correo_coach }}</p>
-                    <a href="{{ route('cliente.show', ['id' => $rutina->pk_rutina]) }}"><button id="alien" class="bl">Detalles</button></a>
-                </div>
-            </div>
-            @endforeach
-        
+
+
+
+    <h1 style="text-align: center; color:#050715; font-weight: 900; font-size: 50px; font-family:arial black; margin-top:-100px; margin-left:275px; position:absolute;" class="rut">Tus rutinas</h1>
+  
+@foreach($rutinasC as $rutina)
+<div class="card" style="margin-left: 30px;">
+    <h3 class="rutina-nombre" style="cursor: pointer; color: white; font-family: avenir;">{{ $rutina->nombre }}</h3>
+    <div class="rutina-detalles" style="display: none;">
+    <p style="font-family: avenir;">Descripción: <span id="descripcion">{{ $rutina->descripción }}</span></p>
+        <img src="{{ asset('storage/' . $rutina->foto_rutina) }}" width="100" height="100">
+        <p style="font-family: avenir;">Nombre del Cliente: {{ $rutina->nombre_cliente }}</p>
+        <p style="font-family: avenir;">Correo del Cliente: {{ $rutina->correo_cliente }}</p>
+        <p style="font-family: avenir;">Nombre Coach: {{ $rutina->nombre_coach }}</p>
+        <p style="font-family: avenir;">Correo Coach: {{ $rutina->correo_coach }}</p>
+        <a href="{{ route('cliente.show', ['id' => $rutina->pk_rutina]) }}"><button id="alien"  class="bl">Detalles</button></a>
+    </div>
+
     </div>
 </section>
 
@@ -202,7 +204,7 @@
 
 
 <script>
-    
+
     document.addEventListener('DOMContentLoaded', function () {
         const nombresRutina = document.querySelectorAll('.rutina-nombre');
         nombresRutina.forEach(nombre => {
@@ -222,7 +224,18 @@
         }
     });
 
-   
+ 
+    document.addEventListener('DOMContentLoaded', function() {
+        const descripcionElement = document.getElementById('descripcion');
+        const fullText = descripcionElement.textContent;
+        const maxWords = 5; 
+
+        const words = fullText.split(' ');
+        if (words.length > maxWords) {
+            descripcionElement.textContent = words.slice(0, maxWords).join(' ') + '...';
+        }
+    });
+
 </script>
 
 
