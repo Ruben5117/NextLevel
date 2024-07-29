@@ -35,7 +35,7 @@
 
    <form action="{{ route('rutina.store') }}" method="POST" enctype="multipart/form-data" class="form" style="margin-left: auto; margin-top: -40%; margin-right: 110px;">
     @csrf
-    <p class="title">Registro </p>
+    <p class="title" style="color: white;">Registro </p>
     <p class="message">Registra la rutina </p>
     <label for="nombre"></label>
     <input class="input" type="text" name="nombre" placeholder="Nombre" required><br>
@@ -84,6 +84,9 @@
         }
         select{
             color: white;
+        }
+        option{
+            color: black;
         }
     </style>
 </body>

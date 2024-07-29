@@ -135,6 +135,8 @@
  <section class="no-parallax" id="section3"> 
     <div class="container"> 
 
+
+
     <h1 style="text-align: center; color:#050715; font-weight: 900; font-size: 50px; font-family:arial black; margin-top:-100px; margin-left:275px; position:absolute;" class="rut">Tus rutinas</h1>
   
 @foreach($rutinasC as $rutina)
@@ -149,12 +151,9 @@
         <p style="font-family: avenir;">Correo Coach: {{ $rutina->correo_coach }}</p>
         <a href="{{ route('cliente.show', ['id' => $rutina->pk_rutina]) }}"><button id="alien"  class="bl">Detalles</button></a>
     </div>
+
     </div>
-@endforeach
-</div>
-
- </section>
-
+</section>
 
  <section  class="no-parallax" id="section4"> 
  <div>
@@ -175,8 +174,8 @@
 <h1 style="color: white; margin-top:90px; text-align:center;">¡Siguenos en nuestras redes sociales!</h1>
 <div class="horizontal-line" style="display: flex; justify-content: space-evenly; align-items: center;">
     <a href="https://www.instagram.com/xaos_princess?igsh=bGpleGVwdDM4YXd5&utm_source=qr">  <img src="css/img/logotipo-de-instagram.png" style="width:40px; height:40px; ">    </a>  
-    <img src="css/img/facebook.png" style="width:40px; height:40px; " > 
-    <img src="css/img/tik-tok.png" style="width:40px; height:40px; " > 
+    <a href="https://www.facebook.com/rubeneduardo.perazaesquer"> <img src="css/img/facebook.png" style="width:40px; height:40px; " > </a>
+    <a href="https://www.tiktok.com/@alberickmarrufo?_t=8oNUf56CjRd&_r=1"> <img src="css/img/tik-tok.png" style="width:40px; height:40px; " >  </a>
 </div>
 
 </footer>
@@ -205,7 +204,7 @@
 
 
 <script>
- 
+
     document.addEventListener('DOMContentLoaded', function () {
         const nombresRutina = document.querySelectorAll('.rutina-nombre');
         nombresRutina.forEach(nombre => {
@@ -242,6 +241,14 @@
 
 
 <style>
+.scrollable {
+    max-height: 600px; 
+    overflow-y: auto;
+    padding: 10px; 
+    display: flex;
+    
+}
+
 
    
 #txt {
@@ -259,6 +266,13 @@
 /* Media Queries para Responsividad */
 
 @media (max-width: 768px) {
+    .scrollable {
+    max-height: 600px; /* Puedes ajustar la altura según tus necesidades */
+    overflow-y: auto;
+    padding: 10px; /* Opcional, para dar algo de espacio interior */
+    display:list-item;/* Opcional, para dar una apariencia de borde */
+    
+}
     .iconf{
         margin-bottom: 50% !important;
         margin-left: 30px;
@@ -278,6 +292,7 @@
     }
     .card{
         margin-left: 129px !important;
+        
     }
     .h1aa{
         font-size: 30px;
@@ -316,6 +331,7 @@
     #txt {
         font-size: 30px;
     }
+    
 
     #txt .subtitle {
         font-size: 10px;
@@ -491,6 +507,7 @@
 
 .navTrigger {
     display: block;
+    
 }
 
 .nav div.logo {
@@ -515,8 +532,8 @@
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: transparent; /* Morado semi-transparente */
-    backdrop-filter: blur(10px); /* Aplica un desenfoque al fondo */
+    background-color: #5E3AD4;
+    backdrop-filter: blur(10px); 
     background-position: center top;
 }
 
@@ -556,7 +573,7 @@
 }
 
 .navTrigger i {
-    background-color: #fff;
+    background-color: #5E3AD4;
     border-radius: 2px;
     content: '';
     display: block;

@@ -50,7 +50,7 @@
                 <p>Nombre Coach: {{ $rutina->nombre_coach }}</p>
                 <p>Correo Coach: {{ $rutina->correo_coach }}</p>
                <div class="botones">
-                <a href="{{ route('rutinas.show', ['id' => $rutina->pk_rutina]) }}"><button id="alien"  class="bl">Detalles</button></a>
+                <a href="{{ route('rutinas.show', ['id' => $rutina->pk_rutina]) }}" ><button id="alien"  class="bl">Detalles</button></a>
                 <form action="{{ route('rutina.destroy', ['id' => $rutina->pk_rutina]) }}" method="POST">
                     @csrf
                     @method('DELETE')
